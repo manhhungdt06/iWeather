@@ -27,7 +27,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" backgroundImage="Refresh"/>
                                 <connections>
-                                    <action selector="changeCAndF:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3Yp-hq-ako"/>
+                                    <action selector="locationChange:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ajn-6n-WCt"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="o" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WKc-AX-j9S">
@@ -74,18 +74,18 @@
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="changeTempAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8f7-BE-oqm"/>
+                                    <action selector="tempChange:" destination="BYZ-38-t0r" eventType="touchUpInside" id="bpU-ke-eJ5"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <outlet property="CFLabel" destination="IWr-tc-HZT" id="chG-Sf-aR1"/>
-                        <outlet property="backgroundImage" destination="o5J-7P-fMe" id="PMD-Lq-59D"/>
-                        <outlet property="cityLabel" destination="HSe-9f-0l0" id="kGp-Wb-sv9"/>
-                        <outlet property="quoteLabel" destination="Y22-Ps-Lct" id="g9l-c8-bsG"/>
-                        <outlet property="tempButton" destination="eBn-dG-dcV" id="B9z-Jh-zda"/>
+                        <outlet property="backgroudView" destination="o5J-7P-fMe" id="H2J-nm-jUg"/>
+                        <outlet property="cityLbl" destination="HSe-9f-0l0" id="kid-ah-CUe"/>
+                        <outlet property="quoteLbl" destination="Y22-Ps-Lct" id="l3O-fc-Bfo"/>
+                        <outlet property="tempBtn" destination="eBn-dG-dcV" id="YhY-UG-r7g"/>
+                        <outlet property="tempLbl" destination="IWr-tc-HZT" id="kW3-X2-buI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

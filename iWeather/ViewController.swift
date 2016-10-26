@@ -10,20 +10,20 @@ import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet weak var quoteLabel: UILabel!
-    @IBOutlet weak var cityLabel: UILabel!
-    @IBOutlet weak var tempButton: UIButton!
-    @IBOutlet weak var CFLabel: UILabel!
-    @IBOutlet weak var backgroundImage: UIImageView!
-    
-    var quote = ["Sometimes to do what's right we must be steady and give up the things we desire the most even our dreams.",
+    @IBOutlet weak var tempLbl: UILabel!
+    @IBOutlet weak var cityLbl: UILabel!
+    @IBOutlet weak var quoteLbl: UILabel!
+    @IBOutlet weak var tempBtn: UIButton!
+    @IBOutlet weak var backgroudView: UIImageView!
+    var quotes = ["Sometimes to do what's right..we must be steady and give up the things we desire the most..even our dreams.",
                  "People don't realize this, but loneliness is underrated.",
                  "Remember, with great power comes great responsibility.",
                  "Think different.","Gone with the wind."]
     
-    var city = ["NewYork","Singapore","Bangkok","HaNoi","Jarkatar"]
     
-    var images = ["Blood","Moon","Sun"]
+    var cityList = ["NewYork","Singapore","Bangkok","HaNoi","Jarkatar","Dubai","London","Berlin"]
+    
+    var backgroudImg = ["Blood","Moon","Sun"]
     
     var isCel : Bool = true
     
@@ -31,58 +31,43 @@ class ViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func changeTempAction(_ sender: AnyObject) {
+    @IBAction func tempChange(_ sender: AnyObject) {
         isCel = !isCel
-        
-        var currentTemp = Double((tempButton.titleLabel?.text)!)
-        
+        var curTemp = Double((tempBtn.titleLabel?.text)!)
         if isCel {
-            currentTemp = (currentTemp! - 32) / 1.8
+            tempLbl.text = "C"
+            curTemp = (curTemp! - 32) / 1.8
+            tempBtn.setTitle(String(format: "%2.1f", curTemp!), for: UIControlState())
             
-            tempButton.setTitle(String(format: "%2.1f", currentTemp!), for: UIControlState())
-            
-            CFLabel.text = "C"
         } else {
-            currentTemp = currentTemp! * 1.8 + 32
-            
-            tempButton.setTitle(String(format: "%2.1f", currentTemp!), for: UIControlState())
-            
-            CFLabel.text = "F"
+            tempLbl.text = "F"
+            curTemp = curTemp! * 1.8 + 32
+            tempBtn.setTitle(String(format: "%2.1f", curTemp!), for: UIControlState())
         }
     }
-
-    @IBAction func changeCAndF(_ sender: AnyObject) {
-        let cityIndex = Int(arc4random_uniform(UInt32(city.count)))
+    @IBAction func locationChange(_ sender: AnyObject) {
+        let cityIndex = Int(arc4random_uniform(UInt32(cityList.count)))
+        cityLbl.text = cityList[cityIndex]
         
-        cityLabel.text = city[cityIndex]
+        let quoteIndex = Int(arc4random_uniform(UInt32(quotes.count)))
         
-        let quoteIndex = Int(arc4random_uniform(UInt32(quote.count)))
+        quoteLbl.text = quotes[quoteIndex]
         
-        quoteLabel.text = quote[quoteIndex]
-        
-        let imageIndex = Int(arc4random_uniform(UInt32(images.count)))
-        
-        backgroundImage.image = UIImage.init(named: images[imageIndex])
+        let imgIndex = Int(arc4random_uniform(UInt32(backgroudImg.count)))
+        backgroudView.image = UIImage.init(named: backgroudImg[imgIndex])
         
         getTemp()
     }
-    
     func getTemp() -> Void {
-        
         let temp = String(format: "%2.1f", randomTemp())
-        
-        tempButton.setTitle(temp, for: UIControlState())
-        
+        tempBtn.setTitle(temp, for: UIControlState())
     }
-    
     func randomTemp() -> Double {
-        
         if isCel {
-            return Double(arc4random_uniform(18) + 14) + Double(arc4random()) / Double(INT32_MAX)
-        }else{
-            return (Double(arc4random_uniform(18) + 14) + Double(arc4random()) / Double(INT32_MAX)) * 1.8 + 32
+            return Double(arc4random_uniform(20)+15) + Double(arc4random()) / Double(INT32_MAX)
+        } else {
+            return (Double(arc4random_uniform(20)+15) + Double(arc4random()) / Double(INT32_MAX)) * 1.8 + 32
         }
-        
     }
 }
 
